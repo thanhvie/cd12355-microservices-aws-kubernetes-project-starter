@@ -14,15 +14,15 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $ECR_REPO_URI:$IMAGE_TAG .
-      - docker tag $ECR_REPO_URI:$IMAGE_TAG $ECR_REPO_URI:latest
+      - docker build -t ${ECR_REPO_URI}:${IMAGE_TAG} .
+      - docker tag ${ECR_REPO_URI}:${IMAGE_TAG} ${ECR_REPO_URI}:latest
 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images to ECR...
-      - docker push $ECR_REPO_URI:$IMAGE_TAG
-      - docker push $ECR_REPO_URI:latest
+      - docker push ${ECR_REPO_URI}:${IMAGE_TAG}
+      - docker push ${ECR_REPO_URI}:latest
 
 artifacts:
   files:
