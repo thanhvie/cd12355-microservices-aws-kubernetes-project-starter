@@ -1,7 +1,8 @@
 version: 0.2
 
 env:
-  variables: IMAGE_TAG:"${CODEBUILD_BUILD_NUMBER}"
+  variables:
+    IMAGE_TAG: "${CODEBUILD_BUILD_NUMBER}"
 
 phases:
   pre_build:
