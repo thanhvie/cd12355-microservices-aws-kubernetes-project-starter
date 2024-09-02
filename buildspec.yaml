@@ -13,7 +13,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t ${ECR_REPO_URI}:${CODEBUILD_BUILD_NUMBER} .
+      # Specify the path to the Dockerfile and the context directory
+      - docker build -t ${ECR_REPO_URI}:${CODEBUILD_BUILD_NUMBER} -f analytics/Dockerfile ./analytics
       - docker tag ${ECR_REPO_URI}:${CODEBUILD_BUILD_NUMBER} ${ECR_REPO_URI}:latest
 
   post_build:
